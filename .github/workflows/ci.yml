@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+          cache: false
       - run: gofmt -l . | tee /dev/stderr | test -z "$(cat)"
       - run: go vet ./...
       - run: go test ./...
@@ -36,6 +37,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+          cache: false
       - name: Build
         env:
           GOOS: ${{ matrix.goos }}
